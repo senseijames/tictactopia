@@ -3,6 +3,11 @@ $CHART_LABEL_WIDTH: 21px;
 $font : "Courier New", Courier, monospace;
 $fontLato: Lato;
 
+::ng-deep {
+  body {
+    background: none;
+  }
+}
 
 // The default letters ('x', 'o')
 i.x::after {
@@ -218,7 +223,7 @@ div.bg-img {
   left: 0;
   width: 100vw;
   height: 100vh;
-  opacity: 0.3;
+  opacity: 0.25;
   z-index: -1;
   background-size: cover;
 }
