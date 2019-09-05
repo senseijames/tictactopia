@@ -10,6 +10,9 @@ TOCO
 - Challenge: possible without DB?  Can send a push notification using device id, perhaps?
 - Sound effects ('x' sound, 'o' sound, celebration sound, configurable by player so they can have their own victory music)
 - Animate wins (on a repeating interval)
+- Support for more icons
+  https://fontawesome.com/cheatsheet?from=io
+  Unminified CSS here: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css
 
 - Better font
 - Animate bar chart then fade in win count
