@@ -200,3 +200,17 @@ div.settingsPanel {
       font-style: normal;
   }
 }
+
+
+// The bg image
+div.bg-img {
+  background-image: url(https://i.imgur.com/FGKQfE2.jpg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.3;
+  z-index: -1;
+  background-size: cover;
+}
