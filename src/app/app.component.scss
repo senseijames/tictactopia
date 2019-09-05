@@ -128,10 +128,14 @@ div.settingsPanel {
     margin: 0 10px;
   }
 
-  > i {
-    font-size: 32px;
-    margin: 5px;
-    cursor: pointer;
+  > div.icont {
+    padding: 10px 30px 0;
+
+    > i {
+      font-size: 32px;
+      margin: 5px;
+      cursor: pointer;
+    }
   }
 
   > label {

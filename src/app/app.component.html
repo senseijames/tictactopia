@@ -40,9 +40,11 @@
   <h4>Choose Your Fate (and your Icon)</h4>
   <hr>
 
-  <ng-container *ngFor="let icon of ICONS">
-    <i [class]="icon" (click)="onSelectIcon(icon); showSettings = false"></i>
-  </ng-container>
+  <div class="icont">
+    <ng-container *ngFor="let icon of ICONS">
+      <i [class]="icon" (click)="onSelectIcon(icon); showSettings = false"></i>
+    </ng-container>
+  </div>  
 
   <br>
   <br>
