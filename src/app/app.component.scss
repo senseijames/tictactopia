@@ -85,6 +85,14 @@ div.win {
   font-weight: bold;
   font-size: 20px;
   text-align: center;
+
+  > span.your-move {
+    font-weight: 500;
+
+    > i {
+      font-weight: bold;
+    }
+  }
 }
 
 i.fa-trash-alt, i.fa-play-circle,
