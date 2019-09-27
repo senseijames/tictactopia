@@ -1,7 +1,7 @@
 Mission Control
 * * * * * * * * * * * 
 LOH
-hiding (easein/out) side menu
+ hiding (easein/out) side menu
 
 TOCO
 - Connect 4 ("n") game mode
