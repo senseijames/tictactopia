@@ -1,5 +1,5 @@
 import { Component, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
-import { IconService } from './icon.service';
+import { IconService } from './service/icon.service';
 import * as d3 from 'd3';
 
 @Component({
