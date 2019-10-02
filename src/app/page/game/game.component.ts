@@ -17,6 +17,7 @@ export class GameComponent {
   score: any = { 'x' : 0, 'o' : 0, 'tie' : 0 };
   totalMoves: number;  // FUTURE: show total moves and/or average moves per game
   icon: any = { 'x' : 'x', 'o' : 'o' };
+  showSettings: boolean;
 
   constructor(private stateService: GameStateService) {
     this.setSize(this.DEFAULT_SIZE);
@@ -31,6 +32,9 @@ export class GameComponent {
     this.stateService.playerIcon.subscribe((iconClass:string)=>{
       this.icon[this.currLetter] = iconClass;
     })
+    this.stateService.showSettings.subscribe((isShow:boolean)=> {
+      this.showSettings = isShow;
+    });
   }
 
   drawAt(x: number, y: number) {
@@ -80,12 +84,6 @@ export class GameComponent {
     ++this.score[letter];
     this.winner = letter;
   }
-
-  showSettings()
-  {
-    alert('showing settings!!  SOON!');
-  }
-
 
   reset() {
     this.squares = Array(this.size);

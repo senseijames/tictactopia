@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IconService} from "../../service/icon.service";
 import {NavigationStart, ActivatedRoute, ParamMap} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import {GameStateService} from '../../service/game.state.service';
 export class SettingsComponent implements OnInit {
 
   readonly ICONS: Array<string>;
-  size: number;
+  @Input() boardSize: number;
 
   constructor(private iconService: IconService, private route: ActivatedRoute, private stateService: GameStateService) {
     this.ICONS = this.iconService.getIcons();
@@ -21,9 +21,9 @@ export class SettingsComponent implements OnInit {
      * Client component:
      *   <i class="fa fa-lrg fa-cog" routerLink="/settings" [queryParams]="{ boardSize : size }"></i>
      */
-    route.queryParamMap.subscribe((params: ParamMap) => {
-      this.size = parseInt(params.get('boardSize'));
-    });
+    // route.queryParamMap.subscribe((params: ParamMap) => {
+    //   this.boardSize = parseInt(params.get('boardSize'));
+    // });
   }
 
   ngOnInit() {

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import {GameComponent} from './game.component';
 import {ChartComponent} from '../../component/chart/chart.component';
+import {SettingsComponent} from '../settings/settings.component';
+import {IconService} from '../../service/icon.service';
 
 const routes: Routes = [
   {
@@ -12,10 +14,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [GameComponent, ChartComponent ],
+  declarations: [GameComponent, ChartComponent, SettingsComponent ],
   imports: [
-    CommonModule, RouterModule.forChild(routes)
+    CommonModule, /* SettingsModule, */ RouterModule.forChild(routes)
   ],
+  providers: [ IconService ]
 })
 export class GameModule { }
 

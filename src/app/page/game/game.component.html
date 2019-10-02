@@ -14,7 +14,7 @@
 
 <br>
 
-<i class="fa fa-lrg fa-cog" (click)="showSettings()"></i>
+<i class="fa fa-lrg fa-cog" (click)="showSettings=true"></i>
 <i [class]="(!winner) ? 'fa fa-trash-alt' : 'fa fa-play-circle'" (click)="reset()"></i>
 
 <div class="win">
@@ -33,5 +33,7 @@
 </div>
 
 <tac-chart *ngIf="winner" [score]="score" [icons]="icon"></tac-chart>
+
+<tac-settings *ngIf="showSettings" [boardSize]="size"></tac-settings>
 
 <div class="bg-img"></div>

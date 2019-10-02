@@ -6,20 +6,20 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 /*
-  Deprecated: unless you decide to show this at its own page.
+  Deprecated: unless you decide to show this as its own page.
  */
-const routes: Routes = [
-  {
-    path: '',
-    component: SettingsComponent
-  }
-];
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: SettingsComponent
+//   }
+// ];
 
 @NgModule({
   declarations: [ SettingsComponent ],
   imports: [
-    CommonModule,
-    RouterModule.forChild(routes)
+    CommonModule
+    // RouterModule.forChild(routes)
   ],
   providers : [ IconService]
 })
