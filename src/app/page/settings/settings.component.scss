@@ -1,46 +1,65 @@
-div {
-  background-color: lightgray;
+div.modal-bg {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
 
-  > h4 {  // Header text
+  > div.cont {
+    background-color: lightgray;
+    width: 80%;
     text-align: center;
-  }
+    margin: auto;
+    margin-top: 10%;
+    padding: 10px;
+    border-radius: 7px;
 
-  // Close 'x'
-  > span {
-    font-size : 22px;
-    cursor: pointer;
-    float: right;
-    margin: 0 10px;
-  }
-
-  > div.icont {
-    padding: 10px 20% 0;
-
-    > i {
-      font-size: 32px;
-      margin: 5px;
-      width: 50px;
-      cursor: pointer;
+    > h4 { // Header text
       text-align: center;
     }
-  }
 
-  > label {
-    margin-left: 7px;
-
-    > input, > button {
-      padding : 12px;
-      border-radius: 7px;
-    }
-    > input {
-      width: 14px;
-    }
-    > button {
+    // Close 'x'
+    > span {
+      font-size: 22px;
       cursor: pointer;
-      background-color : indigo;
-      color : white;
-      margin-left: 3px;
-      font-size: 12px;
+      float: right;
+      margin: 0 10px;
+    }
+
+    > div.icont {
+      padding: 10px 20% 0;
+      max-height: 60vh;
+      overflow-y: scroll;
+
+      > i {
+        font-size: 32px;
+        margin: 5px;
+        width: 50px;
+        cursor: pointer;
+        text-align: center;
+      }
+    }
+
+    > label {
+      margin-left: 7px;
+
+      > input, > button {
+        padding: 12px;
+        border-radius: 7px;
+      }
+
+      > input {
+        width: 14px;
+      }
+
+      > button {
+        cursor: pointer;
+        background-color: indigo;
+        color: white;
+        margin-left: 3px;
+        font-size: 12px;
+      }
     }
   }
 }

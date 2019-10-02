@@ -1,20 +1,22 @@
-<div>
-  <span routerLink="/play" (click)="stateService.showSettings.emit(false)">x</span>
-  <h4>Choose Your Fate (and your Icon)</h4>
-  <hr>
+<div class="modal-bg" (click)="stateService.showSettings.emit(false)">
+  <div class="cont">
+    <span (click)="stateService.showSettings.emit(false)">x</span>
+    <h4>Choose Your Fate (and your Icon)</h4>
+    <hr>
 
-  <div class="icont">
-    <ng-container *ngFor="let icon of ICONS">
-      <i [class]="icon" (click)="stateService.playerIcon.emit(icon);" routerLink="/play"></i>
-    </ng-container>
+    <div class="icont">
+      <ng-container *ngFor="let icon of ICONS">
+        <i [class]="icon" (click)="stateService.playerIcon.emit(icon);" routerLink="/play"></i>
+      </ng-container>
+    </div>
+
+    <br>
+    <br>
+    <hr>
+    <label>
+      Change the size of the game board:
+      <input type="text" [value]="boardSize" #boardSizeField/>
+      <button (click)="stateService.boardSize.emit(boardSizeField.value)">Change It!</button>
+    </label>
   </div>
-
-  <br>
-  <br>
-  <hr>
-  <label>
-    Change the size of the game board:
-    <input type="text" [value]="boardSize" #boardSizeField/>
-    <button (click)="stateService.boardSize.emit(boardSizeField.value)">Change It!</button>
-  </label>
 </div>
