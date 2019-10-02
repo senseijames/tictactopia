@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {IconService} from "../../service/icon.service";
 
 @Component({
-  selector: 'app-settings',
+  selector: 'tac-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+  styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+  readonly ICONS: Array<string>;
+// TODO: retrieve in route param?
+  size: number;
+
+  @Output() boardSize: EventEmitter<string>;
+  @Output() playerIcon: EventEmitter<string>;
+
+  constructor(private iconService: IconService) {
+    this.ICONS = this.iconService.getIcons();
+  }
 
   ngOnInit() {
+
   }
 
 }

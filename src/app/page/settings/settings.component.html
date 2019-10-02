@@ -1,3 +1,20 @@
-<p>
-  settings works!
-</p>
+<div>
+  <span routerLink="/play">x</span>
+  <h4>Choose Your Fate (and your Icon)</h4>
+  <hr>
+
+  <div class="icont">
+    <ng-container *ngFor="let icon of ICONS">
+      <i [class]="icon" (click)="playerIcon.emit(icon);" routerLink="/play"></i>
+    </ng-container>
+  </div>
+
+  <br>
+  <br>
+  <hr>
+  <label>
+    Change the size of the game board:
+    <input type="text" [value]="size" #boardSizeField/>
+    <button (click)="boardSize.emit(boardSizeField.value)">Change It!</button>
+  </label>
+</div>

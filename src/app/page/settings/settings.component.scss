@@ -1,0 +1,46 @@
+div {
+  background-color: lightgray;
+
+  > h4 {  // Header text
+    text-align: center;
+  }
+
+  // Close 'x'
+  > span {
+    font-size : 22px;
+    cursor: pointer;
+    float: right;
+    margin: 0 10px;
+  }
+
+  > div.icont {
+    padding: 10px 20% 0;
+
+    > i {
+      font-size: 32px;
+      margin: 5px;
+      width: 50px;
+      cursor: pointer;
+      text-align: center;
+    }
+  }
+
+  > label {
+    margin-left: 7px;
+
+    > input, > button {
+      padding : 12px;
+      border-radius: 7px;
+    }
+    > input {
+      width: 14px;
+    }
+    > button {
+      cursor: pointer;
+      background-color : indigo;
+      color : white;
+      margin-left: 3px;
+      font-size: 12px;
+    }
+  }
+}
