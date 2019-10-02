@@ -15,7 +15,7 @@
 <br>
 
 <i [class]="(!winner) ? 'fa fa-trash-alt' : 'fa fa-play-circle'" (click)="reset()"></i>
-<i class="fa fa-lrg fa-cog" routerLink="/settings" [queryParams]="{ boardSize : size }"></i>
+<i class="fa fa-lrg fa-cog" (click)="showSettings()"></i>
 
 <div class="win">
   <span [hidden]="!winner">
@@ -32,7 +32,6 @@
   </span>
 </div>
 
-<div class="chart" [hidden]="!winner">
-</div>
+<tac-chart *ngIf="winner" [score]="score" [icons]="icon"></tac-chart>
 
 <div class="bg-img"></div>
