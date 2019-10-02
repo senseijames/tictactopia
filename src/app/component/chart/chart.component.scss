@@ -1,0 +1,60 @@
+$CHART_LABEL_WIDTH: 21px;
+
+// The 'winners' bar chart.
+// TODO: Confusion!
+// If :host means "this component" and ::ng-deep
+// means "global", then why does the combination
+// mean "scoped to the current component and
+// all its descendants"?  And more importantly,
+// how is it different from just "div.chart"
+// AND why does the latter fail while the
+// below works?
+:host ::ng-deep div.chart {
+  margin : 10px 0;
+
+  > div {
+    font: 14px sans-serif;
+    margin: 2px 0;
+    color: white;
+
+    > span, > i {
+      display: inline-block;
+    }
+
+    // The legend (player name e.g. 'x' or 'o')
+    > i:first-of-type {
+      width: $CHART_LABEL_WIDTH;
+    }
+    > i:first-of-type,    // The legend and
+    > span:nth-child(3) { // the numeric value
+      color: steelblue;
+      vertical-align: 80%;
+    }
+
+    // The numeric value.
+    > span:nth-child(3) {
+      margin-left: 3px;
+    }
+
+    // The bar chart
+    > span:nth-child(2) {
+      height: 36px;
+      // background-color: steelblue;
+    }
+  }
+
+  // Yes, these need to be redefined here,
+  // in the 'local global' (!?!) scope, to render.
+  i.x::after {
+    content : 'x';
+    font-style: normal;
+  }
+  i.o::after {
+    content : 'o';
+    font-style: normal;
+  }
+  i.tie::after {
+    content : 'tie';
+    font-style: normal;
+  }
+}

@@ -5,7 +5,7 @@
 
   <div class="icont">
     <ng-container *ngFor="let icon of ICONS">
-      <i [class]="icon" (click)="playerIcon.emit(icon);" routerLink="/play"></i>
+      <i [class]="icon" (click)="stateService.playerIcon.emit(icon);" routerLink="/play"></i>
     </ng-container>
   </div>
 
@@ -15,6 +15,6 @@
   <label>
     Change the size of the game board:
     <input type="text" [value]="size" #boardSizeField/>
-    <button (click)="boardSize.emit(boardSizeField.value)">Change It!</button>
+    <button (click)="stateService.boardSize.emit(boardSizeField.value)">Change It!</button>
   </label>
 </div>

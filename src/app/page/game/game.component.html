@@ -15,7 +15,7 @@
 <br>
 
 <i [class]="(!winner) ? 'fa fa-trash-alt' : 'fa fa-play-circle'" (click)="reset()"></i>
-<i class="fa fa-lrg fa-cog" routerLink="/settings"></i>
+<i class="fa fa-lrg fa-cog" routerLink="/settings" [queryParams]="{ boardSize : size }"></i>
 
 <div class="win">
   <span [hidden]="!winner">

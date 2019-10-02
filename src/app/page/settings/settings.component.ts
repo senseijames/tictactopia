@@ -1,5 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {IconService} from "../../service/icon.service";
+import {NavigationStart, ActivatedRoute, ParamMap} from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import {GameStateService} from '../../service/game.state.service';
 
 @Component({
   selector: 'tac-settings',
@@ -9,18 +12,21 @@ import {IconService} from "../../service/icon.service";
 export class SettingsComponent implements OnInit {
 
   readonly ICONS: Array<string>;
-// TODO: retrieve in route param?
   size: number;
 
-  @Output() boardSize: EventEmitter<string>;
-  @Output() playerIcon: EventEmitter<string>;
-
-  constructor(private iconService: IconService) {
+  constructor(private iconService: IconService, private route: ActivatedRoute, private stateService: GameStateService) {
     this.ICONS = this.iconService.getIcons();
+
+    /**
+     * Client component:
+     *   <i class="fa fa-lrg fa-cog" routerLink="/settings" [queryParams]="{ boardSize : size }"></i>
+     */
+    route.queryParamMap.subscribe((params: ParamMap) => {
+      this.size = parseInt(params.get('boardSize'));
+    });
   }
 
   ngOnInit() {
-
   }
 
 }

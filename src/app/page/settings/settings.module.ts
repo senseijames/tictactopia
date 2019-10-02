@@ -5,6 +5,9 @@ import {IconService} from '../../service/icon.service';
 import { Routes, RouterModule } from '@angular/router';
 
 
+/*
+  Deprecated: unless you decide to show this at its own page.
+ */
 const routes: Routes = [
   {
     path: '',

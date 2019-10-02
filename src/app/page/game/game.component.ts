@@ -1,5 +1,6 @@
 import { Component, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
 import * as d3 from 'd3';
+import {GameStateService} from '../../service/game.state.service';
 
 @Component({
   selector: 'tac-main',
@@ -18,11 +19,19 @@ export class MainComponent implements AfterContentInit{
   totalMoves: number;  // FUTURE: show total moves and/or average moves per game
   icon: any = { 'x' : 'x', 'o' : 'o' };
 
-  constructor() {
+  constructor(private stateService: GameStateService) {
     this.setSize(this.DEFAULT_SIZE);
     this.totalMoves = 0;
 
     this.currLetter = 'x';
+
+// LOH: find a way to persist the game state in the background.
+    this.stateService.boardSize.subscribe((size:number)=>{
+      this.setSize(size);
+    });
+    this.stateService.playerIcon.subscribe((iconClass:string)=>{
+      this.icon[this.currLetter] = iconClass;
+    })
   }
 
   ngAfterContentInit() {
@@ -30,12 +39,7 @@ export class MainComponent implements AfterContentInit{
     // this.drawChart();
   }
 
-// TODO: wire up to playerIcon.emit from Settings page.
-  onSelectIcon(iconClass) {
-    this.icon[this.currLetter] = iconClass;
-  }
-
-  drawAt(x: number, y: number) {    
+  drawAt(x: number, y: number) {
     if (this.winner || this.squares[x][y]) return;
 
     this.squares[x][y] = this.currLetter;
@@ -84,6 +88,7 @@ export class MainComponent implements AfterContentInit{
     this.drawChart();
   }
 
+// TODO: move this to chart component
   drawChart() {
     // Clear any previous values.
     d3.selectAll('div.chart > div').remove();
