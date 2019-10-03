@@ -17,6 +17,7 @@ export class GameComponent {
   score: any = { 'x' : 0, 'o' : 0, 'tie' : 0 };
   totalMoves: number;  // FUTURE: show total moves and/or average moves per game
   icon: any = { 'x' : 'x', 'o' : 'o' };
+  chartType: string = 'bar';
   showSettings: boolean;
 
   constructor(private stateService: GameStateServiceBus) {
@@ -34,6 +35,9 @@ export class GameComponent {
     })
     this.stateService.showSettings.subscribe((isShow:boolean)=> {
       this.showSettings = isShow;
+    });
+    this.stateService.chartType.subscribe((chart:string)=> {
+      this.chartType = chart || (this.chartType === 'bar') ? 'pie' : 'bar';
     });
   }
 

@@ -1,15 +1,19 @@
 $CHART_LABEL_WIDTH: 21px;
 
+div#pie-chart {
+  text-align: center;
+}
+
 // The 'winners' bar chart.
 // TODO: Confusion!
 // If :host means "this component" and ::ng-deep
 // means "global", then why does the combination
 // mean "scoped to the current component and
 // all its descendants"?  And more importantly,
-// how is it different from just "div.chart"
+// how is it different from just "div.bar"
 // AND why does the latter fail while the
 // below works?
-:host ::ng-deep div.chart {
+:host ::ng-deep div#bar-chart {
   margin : 10px 0;
 
   > div {
