@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import * as d3 from 'd3';
+import {GameStateServiceBus} from '../../service/game-state.service-bus';
 
 @Component({
   selector: 'tac-chart',
@@ -11,7 +12,7 @@ export class ChartComponent implements OnInit {
   @Input() score: any;
   @Input() icons: any;
 
-  constructor() { }
+  constructor(private gameStateBus: GameStateServiceBus) { }
 
   ngOnInit() {
     this.drawChart();

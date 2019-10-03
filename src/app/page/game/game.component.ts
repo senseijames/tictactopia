@@ -1,5 +1,5 @@
 import { Component, AfterContentInit, ViewChild, ElementRef } from '@angular/core';
-import {GameStateService} from '../../service/game.state.service';
+import {GameStateServiceBus} from '../../service/game-state.service-bus';
 
 @Component({
   selector: 'tac-game',
@@ -19,7 +19,7 @@ export class GameComponent {
   icon: any = { 'x' : 'x', 'o' : 'o' };
   showSettings: boolean;
 
-  constructor(private stateService: GameStateService) {
+  constructor(private stateService: GameStateServiceBus) {
     this.setSize(this.DEFAULT_SIZE);
     this.totalMoves = 0;
 

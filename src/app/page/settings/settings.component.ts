@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IconService} from "../../service/icon.service";
 import {NavigationStart, ActivatedRoute, ParamMap} from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import {GameStateService} from '../../service/game.state.service';
+import {GameStateServiceBus} from '../../service/game-state.service-bus';
 
 @Component({
   selector: 'tac-settings',
@@ -14,7 +14,7 @@ export class SettingsComponent implements OnInit {
   readonly ICONS: Array<string>;
   @Input() boardSize: number;
 
-  constructor(private iconService: IconService, private route: ActivatedRoute, private stateService: GameStateService) {
+  constructor(private iconService: IconService, private route: ActivatedRoute, private stateService: GameStateServiceBus) {
     this.ICONS = this.iconService.getIcons();
 
     /**
