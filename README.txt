@@ -28,3 +28,13 @@ TOCO
 Layout
 - Scroll the screen for super large layouts so it doesn't break
 - If going to allow for resize (e.g. pinch to zoom) will need better letter centering
+
+
+* * * * * * * * * *
+* Running
+* * * * * * * * * *
+To serve to your phone on *WiFi (via HTTPS, using Angular's self-generated SSL cert, so you can use the mobile camera!)
+
+  ng s --host=0.0.0.0 --port=4200 --ssl
+
+(* Technically this will make the app available on the same network as your computer, which is almost always WiFi)
