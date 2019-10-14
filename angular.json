@@ -25,7 +25,11 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/aframe/dist/aframe-master.js",
+              "node_modules/ar.js/aframe/build/aframe-ar.js",
+              "node_modules/zone.js/dist/zone.js"
+            ]
           },
           "configurations": {
             "production": {
