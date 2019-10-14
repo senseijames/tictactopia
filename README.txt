@@ -1,5 +1,11 @@
 Mission Control
 * * * * * * * * * * * 
+
+AR Handtracking
+Would need better model (to recognize back of the hand better), but looks interesting ATVL
+- https://github.com/victordibia/handtrack.js/
+- https://hackernoon.com/handtrackjs-677c29c1d585
+
 LOH
  hiding (easein/out) side menu
 
