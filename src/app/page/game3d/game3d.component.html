@@ -1,9 +1,34 @@
-<p>game3-d works! Is Augmented Reality is: {{ isAR }}</p>
+<a-scene [attr.embedded]="(isAR) ? '' : null" [attr.arjs]="(isAR) ? '' : null">
 
-<a-scene>
-  <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+  <ng-container *ngFor="let cube of numCubes; index as i">
+    <a-box [attr.position]="'-1 ' + (1 + 0.5 * i) + ' -3'" rotation="0 45 0" class="clickable"
+           width="0.25" height="0.25" depth="0.25"
+           animation__click="property: rotation; to: 0 360 0; easing: linear; startEvents: click; dur: 1000"
+           color="#00FF00">
+    </a-box>
+  </ng-container>
+
+  <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" class="clickable"
+         animation__click="property: rotation; to: 0 360 0; easing: linear; startEvents: click; dur: 3000">
+  </a-box>
+
   <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
   <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+
   <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
   <a-sky color="#ECECEC"></a-sky>
+
+  <a-entity position="0 0 5">
+    <a-entity camera look-controls>  <!-- pointerLockEnabled>-->
+      <a-entity cursor="fuse: true" raycaster="objects: .clickable"
+                position="0 0 -3"
+                geometry="primitive: ring; radiusInner: 0.1; radiusOuter: 0.12"
+                material="color: red; shader: flat"
+                animation__click="property: scale; easing: easeInQuad; from: 0.2 0.2 0.2; to: 1 1 1; startEvents: click; dur: 150"
+                animation__fusing="property: scale; easing: easeInQuad; from: 1 1 1; to: 0.2 0.2 0.2; startEvents: fusing; pauseEvents: mouseleave; dur: 1500"
+                animation__mouseleave="property: scale; easing: easeOutQuad; to: 1 1 1; startEvents: mouseleave; pauseEvents: fusing; dur: 300">
+      </a-entity>
+    </a-entity>
+  </a-entity>
+
 </a-scene>
