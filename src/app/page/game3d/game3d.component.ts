@@ -5,7 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'tac-game3d',
   templateUrl: './game3d.component.html',
-  styleUrls: ['./game3d.component.scss']
+  styleUrls: ['./game3d.component.scss'],
+//  encapsulation: ViewEncapsulation.None
 })
 export class Game3DComponent implements OnInit {
   isAR: boolean;

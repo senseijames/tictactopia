@@ -1,6 +1,11 @@
 Mission Control
 * * * * * * * * * * * 
 
+Markers!!
+https://jeromeetienne.github.io/AR.js/data/images/HIRO.jpg
+https://raw.githubusercontent.com/jeromeetienne/AR.js/master/three.js/examples/marker-training/examples/pattern-files/pattern-hiro.patt
+
+
 AR Handtracking
 Would need better model (to recognize back of the hand better), but looks interesting ATVL
 - https://github.com/victordibia/handtrack.js/
