@@ -26,6 +26,7 @@
               "src/styles.css"
             ],
             "scripts": [
+              "node_modules/aframe/dist/aframe-master.js",
               "node_modules/zone.js/dist/zone.js"
             ]
           },

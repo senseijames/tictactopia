@@ -9,10 +9,10 @@ import { ActivatedRoute } from '@angular/router';
 //  encapsulation: ViewEncapsulation.None
 })
 export class Game3DComponent implements OnInit {
-  isAR: boolean;
+  isVR: boolean;
 
   constructor(route: ActivatedRoute) {
-    this.isAR = !!route.snapshot.paramMap.get('AR');
+    this.isVR = !!route.snapshot.paramMap.get('VR');
   }
 
   ngOnInit() {

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+<!-- TODO: inline this -->
+
 <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"> </script>
 
@@ -11,13 +14,13 @@
 <a-scene embedded arjs>
   <a-marker preset="hiro" smooth="true">
 
-    <ng-container *ngFor="let cube of numCubes; index as i">
-      <a-box [attr.position]="'0 ' + (0.5 * i) + ' -3'" rotation="0 45 0" class="clickable"
-             width="0.25" height="0.25" depth="0.25"
-             animation__click="property: rotation; to: 0 360 0; easing: linear; startEvents: click; dur: 1000"
-             color="#00FF00">
-      </a-box>
-    </ng-container>
+    <!--<ng-container *ngFor="let cube of numCubes; index as i">-->
+      <!--<a-box [attr.position]="'0 ' + (0.5 * i) + ' -3'" rotation="0 45 0" class="clickable"-->
+             <!--width="0.25" height="0.25" depth="0.25"-->
+             <!--animation__click="property: rotation; to: 0 360 0; easing: linear; startEvents: click; dur: 1000"-->
+             <!--color="#00FF00">-->
+      <!--</a-box>-->
+    <!--</ng-container>-->
 
 
     <!--<a-box position="0 0.5 0" rotation="0 45 0" color="yellow" class="clickable"-->
