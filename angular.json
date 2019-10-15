@@ -27,6 +27,7 @@
             ],
             "scripts": [
               "node_modules/aframe/dist/aframe-master.js",
+              "node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.js",
               "node_modules/zone.js/dist/zone.js"
             ]
           },
