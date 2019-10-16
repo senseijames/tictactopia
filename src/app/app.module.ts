@@ -9,7 +9,7 @@ const routes: Routes = [
   // { path : 'settings', loadChildren : ()=> import('./page/settings/settings.module').then(m => m.SettingsModule) },
   { path : 'play', loadChildren : ()=> import('./page/game/game.module').then(m => m.GameModule) },
   { path : 'play3D', loadChildren : ()=> import('./page/game3d/game3d.module').then(m => m.Game3DModule) },
-  { path : 'play3D/:AR', loadChildren : ()=> import('./page/game3d/game3d.module').then(m => m.Game3DModule) },
+  { path : 'play3D/:VR', loadChildren : ()=> import('./page/game3d/game3d.module').then(m => m.Game3DModule) },
   { path : 'menu', loadChildren : ()=> import('./page/main-menu/main-menu.module').then(m => m.MainMenuModule )},
   { path : '', redirectTo : 'menu', pathMatch : 'full' }
 ];

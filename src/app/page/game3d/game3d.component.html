@@ -1,32 +1,53 @@
-<!--<a-scene [attr.embedded]="(isAR) ? '' : null" [attr.arjs]="(isAR) ? '' : null">-->
-<a-scene>
+<a-scene #scene>
 
-  <ng-container *ngFor="let cube of numCubes; index as i">
-    <a-box [attr.position]="'-1 ' + (1 + 0.5 * i) + ' -3'" rotation="0 45 0" class="clickable"
-           width="0.25" height="0.25" depth="0.25"
-           animation__click="property: rotation; to: 0 360 0; easing: linear; startEvents: click; dur: 1000"
-           color="#00FF00">
-    </a-box>
-  </ng-container>
+  <a-entity #board [attr.position]="(START_X + HALF_LENGTH) + ' ' + (START_Y + HALF_LENGTH) + ' ' + (START_Z + HALF_LENGTH)">
+    <ng-container *ngFor="let row of dims; index as x">
+      <ng-container *ngFor="let col of dims; index as y">
+        <ng-container *ngFor="let depth of dims; index as z">
+          <a-box [attr.position]="(0.5 * x - HALF_LENGTH) + ' ' + (0.5 * y - HALF_LENGTH) + ' ' + (0.5 * z - HALF_LENGTH)"
+                 rotation="0 0 0" class="clickable piece" [attr.player-move]="x + ',' + y + ',' + z"
+                 width="0.3" height="0.3" depth="0.3"
+                 animation__click="property: rotation; to: 0 360 0; easing: linear; startEvents: click; dur: 1000"
+                 color="green">
+          </a-box>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </a-entity>
 
-  <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" class="clickable"
-         animation__click="property: rotation; to: 0 360 0; easing: linear; startEvents: click; dur: 3000">
-  </a-box>
+  <!-- visible = "false" -->
+  <a-plane [attr.position]="(START_X + HALF_LENGTH - 0.15) + ' ' + (START_Y + HALF_LENGTH - 0.15) + ' ' + (START_Z - 0.15)"
+           visible="false"
+           rotation="0 0 0" [attr.width]="LENGTH" [attr.height]="LENGTH" color="#FFC65D"></a-plane>
 
-  <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-  <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+  <a-plane #smallTurn class="clickable"
+           visible="false"
+           [attr.position]="(START_X + HALF_LENGTH - 0.15) + ' ' + (START_Y + HALF_LENGTH - 0.15) + ' ' + (START_Z - 0.16)"
+           rotation="0 0 0" [attr.width]="2.5 * LENGTH" [attr.height]="2 * LENGTH" color="black"></a-plane>
 
-  <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+  <a-plane #largeTurn class="clickable"
+           visible="false"
+           [attr.position]="(START_X + HALF_LENGTH - 0.15) + ' ' + (START_Y + HALF_LENGTH - 0.15) + ' ' + (START_Z - 0.17)"
+           rotation="0 0 0" [attr.width]="4 * LENGTH" [attr.height]="3 * LENGTH" color="#FFC65D"></a-plane>
+
   <a-sky color="#ECECEC"></a-sky>
 
-  <a-entity camera look-controls pointerLockEnabled>  <!-- >-->
-              position="0 0 -3"
-              geometry="primitive: ring; radiusInner: 0.1; radiusOuter: 0.12"
-    <a-entity [attr.cursor]="{ fuse: true, rayOrigin: (isVR) ? 'entity' : 'mouse'}" raycaster="objects: .clickable"
-              material="color: red; shader: flat"
-              animation__click="property: scale; easing: easeInQuad; from: 0.2 0.2 0.2; to: 1 1 1; startEvents: click; dur: 150"
-              animation__fusing="property: scale; easing: easeInQuad; from: 1 1 1; to: 0.2 0.2 0.2; startEvents: fusing; pauseEvents: mouseleave; dur: 1500"
-              animation__mouseleave="property: scale; easing: easeOutQuad; to: 1 1 1; startEvents: mouseleave; pauseEvents: fusing; dur: 300">
+  <a-entity #cameraParent>
+    <a-entity camera look-controls pointerLockEnabled #camera>
+      <!-- TODO: get this working for non VR mode
+      <a-entity *ngIf="!isVR" cursor="rayOrigin: mouse" raycaster="objects: .clickable" position="0 0 -1">
+      </a-entity>
+      -->
+
+      <!-- *ngIf="isVR" -->
+      <a-entity cursor="fuse: true; rayOrigin: entity" raycaster="objects: .clickable"
+                position="0 0 -1"
+                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                [attr.material]="'color: ' + currTurn"
+                animation__click="property: scale; easing: easeInQuad; from: 0.5 0.5 0.5; to: 1 1 1; startEvents: click; dur: 150"
+                animation__fusing="property: scale; easing: easeInQuad; from: 1 1 1; to: 0.5 0.5 0.5; startEvents: fusing; pauseEvents: mouseleave; dur: 1500"
+                animation__mouseleave="property: scale; easing: easeOutQuad; to: 1 1 1; startEvents: mouseleave; pauseEvents: fusing; dur: 300">
+      </a-entity>
     </a-entity>
   </a-entity>
 

@@ -32,7 +32,7 @@ export class GameComponent {
     });
     this.stateService.playerIcon.subscribe((iconClass:string)=>{
       this.icon[this.currLetter] = iconClass;
-    })
+    });
     this.stateService.showSettings.subscribe((isShow:boolean)=> {
       this.showSettings = isShow;
     });
