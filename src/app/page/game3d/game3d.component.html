@@ -22,7 +22,7 @@
   <a-entity camera look-controls pointerLockEnabled>  <!-- >-->
               position="0 0 -3"
               geometry="primitive: ring; radiusInner: 0.1; radiusOuter: 0.12"
-    <a-entity cursor="fuse: true" raycaster="objects: .clickable" [attr.mouse-cursor]="(isVR) ? null : ''"
+    <a-entity [attr.cursor]="{ fuse: true, rayOrigin: (isVR) ? 'entity' : 'mouse'}" raycaster="objects: .clickable"
               material="color: red; shader: flat"
               animation__click="property: scale; easing: easeInQuad; from: 0.2 0.2 0.2; to: 1 1 1; startEvents: click; dur: 150"
               animation__fusing="property: scale; easing: easeInQuad; from: 1 1 1; to: 0.2 0.2 0.2; startEvents: fusing; pauseEvents: mouseleave; dur: 1500"
