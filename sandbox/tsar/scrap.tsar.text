@@ -1,0 +1,12 @@
+<a-camera gps-camera="minDistance: 20;" rotation-reader>
+
+try adding to scene
+artoolkit
+
+
+<a-entity id="cameraParent">
+
+
+
+
+

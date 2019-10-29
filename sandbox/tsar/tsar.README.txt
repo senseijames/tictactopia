@@ -1,0 +1,54 @@
+* * * * * * * * *
+* M2M AR
+* * * * * * * * *
+
+AR.js geolocation
+https://medium.com/chialab-open-source/location-based-gps-augmented-reality-on-the-web-7a540c515b3c
+
+P2P (Peer to Peer, i.e. serverless) communication with WebRTC
+Also uses broker server for connection mgmt!!
+https://peerjs.com
+
+TODO: Research: webrtc peer to peer brokering
+or
+webrtc peer brokering
+
+Uses broker server, I believe
+https://github.com/js-platform/p2p
+https://hacks.mozilla.org/2013/03/webrtc-data-channels-for-great-multiplayer/
+
+AR Gif Component
+https://github.com/rodrigocam/ar-gif
+
+AR.js click event
+https://medium.com/swlh/how-to-handle-click-events-on-ar-js-f397ea5994d
+
+general WebRTC talk
+https://www.youtube.com/watch?v=p2HzZkd2A40
+
+https://jeromeetienne.github.io/AR.js/
+https://medium.com/swlh/10-tips-to-enhance-your-ar-js-app-8b44c6faffca
+http://www.nexusinteractivearts.com/webar/
+https://aframe.io/blog/arjs/
+https://docs.mapbox.com/help/how-mapbox-works/web-apps/
+
+https://codepen.io/sensei/pens/public
+
+WebRTC
+https://www.html5rocks.com/en/tutorials/casestudies/hobbit2014/#toc-settingupwebrtc
+https://hacks.mozilla.org/2013/03/webrtc-data-channels-for-great-multiplayer/
+https://webrtc.org/start/
+
+https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Session_lifetime
+https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity
+https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/icecandidate_event
+
+
+Service Workers the answer?  Angular uses for Server Push, looks like:
+https://malcoded.com/posts/angular-push-notifications/#subscribing-to-push-notifications
+
+Can fallback to just using WebSockets propped up on a thin Heroku Server
+https://serverjs.io/tutorials/chat/
+
+postMessage bridge?
+https://gist.github.com/danielisaksson/f3a1afefdfaffdb4d22f
