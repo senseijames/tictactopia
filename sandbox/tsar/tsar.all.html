@@ -67,8 +67,7 @@
   let scene;
 
   setTimeout(() => {
-//window.addEventListener('load', () => {
-    console.log('window pseudo-loaded!!!');
+//window.addEventListener('load', () => { // console.log('window pseudo-loaded!!!');
   scene = document.querySelector('a-scene');
   console.log('About to init...');
   init();
@@ -122,16 +121,22 @@
     });
   }
 
+  // LOH:
   function onGeoloc(pos){
     console.log('Geolocation!', pos);
-    alert('You have been found!!\n\nYour location is\n\tlatitude ' + pos.coords.latitude + '\n\tlongitude ' + pos.coords.longitude);
+    alert('You have been found!!\n\nYour location is\n\tlatitude ' + pos.coords.latitude + '\n\tlongitude ' + pos.coords.longitude + '\n\nWe are now adding seven devices to your surrounding area - you can drag the screen to rotate their virtual environment, moving all devices at once, or click an item to see its name');
 
+    addRandomMarkers(pos.coords.latitude, pos.coords.longitude, 7);
+
+    // runTests();
+  }
+
+  function runTests(){
     //const myMarker = { name : 'ME!', location : { latitude : pos.coords.latitude, longitude : pos.coords.longitude }};
     //renderPlaces([ myMarker ]);
 
-    addTestMarkers(pos.coords.latitude, pos.coords.longitude);
-    // TODO: Re-enable this once camera look is working.
-    // addRandomMarkers(pos.coords.latitude, pos.coords.longitude);
+    // TODO: use this to get camera look working
+    // addTestMarkers(pos.coords.latitude, pos.coords.longitude);
   }
 
   function renderPlaces(places)
@@ -151,7 +156,7 @@
 
     icon.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
 
-// TOOD: use case of this?  Direct message?  See deets?
+    // TODO: consider possible use cases: Direct message?  See deets?
     const clickListener = function (ev) {
       ev.stopPropagation();
       ev.preventDefault();
@@ -168,9 +173,10 @@
         container.appendChild(label);
         document.body.appendChild(container);
 
+        alert(name);
         setTimeout(() => {
           container.parentElement.removeChild(container);
-      }, 1500);
+        }, 3000);
       }
     };
 
@@ -186,35 +192,55 @@
 
 
 
-  function addRandomMarkers(latitude, longitude)
+  function addRandomMarkers(latitude, longitude, count = 5)
   {
     //    const longitude = pos.coords.latitude;
     //    const longitude = pos.coords.longitude;
     // pal 2-5, img 0-63
     // https://maps.google.com/mapfiles/kml/pal2/icon' + img + '.png
-    const newMarkers = [
-      { name : 'Random - East', latitude : latitude + Math.random() * DEGREE_STEP,
-        longitude : longitude + Math.random() * DEGREE_STEP,
-        icon : 'https://maps.google.com/mapfiles/kml/pal' + (Math.ceil(Math.random() * 3) + 2) + '/icon' + Math.ceil(Math.random() * 63) + '.png'
-      },
-      { name : 'Random - West', latitude : latitude - Math.random() * DEGREE_STEP,
-        longitude : longitude - Math.random() * DEGREE_STEP,
-        icon : 'https://maps.google.com/mapfiles/kml/pal' + (Math.ceil(Math.random() * 3) + 2) + '/icon' + Math.ceil(Math.random() * 63) + '.png'
-      },
-      { name : 'Random - North',
-        latitude : latitude - Math.random() * DEGREE_STEP,
-        longitude : longitude + Math.random() * DEGREE_STEP,
-        icon : 'https://maps.google.com/mapfiles/kml/pal' + (Math.ceil(Math.random() * 3) + 2) + '/icon' + Math.ceil(Math.random() * 63) + '.png'
-      },
-      { name : 'Random - South', latitude : latitude + Math.random() * DEGREE_STEP,
-        longitude : longitude - Math.random() * DEGREE_STEP,
-        icon : 'https://maps.google.com/mapfiles/kml/pal' + (Math.ceil(Math.random() * 3) + 2) + '/icon' + Math.ceil(Math.random() * 63) + '.png'
-      },
-      { name : 'Random', latitude : latitude - Math.random() * 2 * DEGREE_STEP,
-        longitude : longitude + Math.random() * 2 * DEGREE_STEP,
-        icon : 'https://maps.google.com/mapfiles/kml/pal' + (Math.ceil(Math.random() * 3) + 2) + '/icon' + Math.ceil(Math.random() * 63) + '.png'
-      }
-    ];
+    const newMarkers = [];
+
+    for (let i = 0, len = count; i < len; ++i){
+      switch(i % 5){
+        case 0:
+            newMarkers.push(
+          { name : 'Random - East', latitude : latitude + Math.random() * DEGREE_STEP,
+            longitude : longitude + Math.random() * DEGREE_STEP,
+            icon : 'https://maps.google.com/mapfiles/kml/pal' + (Math.ceil(Math.random() * 3) + 2) + '/icon' + Math.ceil(Math.random() * 63) + '.png'
+          });
+          break;
+        case 1:
+            newMarkers.push(
+          { name : 'Random - West', latitude : latitude - Math.random() * DEGREE_STEP,
+            longitude : longitude - Math.random() * DEGREE_STEP,
+            icon : 'https://maps.google.com/mapfiles/kml/pal' + (Math.ceil(Math.random() * 3) + 2) + '/icon' + Math.ceil(Math.random() * 63) + '.png'
+          });
+        break;
+        case 2:
+            newMarkers.push(
+          { name : 'Random - North',
+            latitude : latitude - Math.random() * DEGREE_STEP,
+            longitude : longitude + Math.random() * DEGREE_STEP,
+            icon : 'https://maps.google.com/mapfiles/kml/pal' + (Math.ceil(Math.random() * 3) + 2) + '/icon' + Math.ceil(Math.random() * 63) + '.png'
+          });
+        break;
+        case 3:
+            newMarkers.push(
+          { name : 'Random - South', latitude : latitude + Math.random() * DEGREE_STEP,
+            longitude : longitude - Math.random() * DEGREE_STEP,
+            icon : 'https://maps.google.com/mapfiles/kml/pal' + (Math.ceil(Math.random() * 3) + 2) + '/icon' + Math.ceil(Math.random() * 63) + '.png'
+          });
+            break;
+        case 4:
+            newMarkers.push( // Random  location, 2x as far away (potentially)
+          { name : 'Random', latitude : Math.random() > 0.5 ? latitude - Math.random() * 2 * DEGREE_STEP : latitude + Math.random() * 2 * DEGREE_STEP,
+            longitude : Math.random() > 0.5 ? longitude + Math.random() * 2 * DEGREE_STEP : longitude - Math.random() * 2 * DEGREE_STEP,
+            icon : 'https://maps.google.com/mapfiles/kml/pal' + (Math.ceil(Math.random() * 3) + 2) + '/icon' + Math.ceil(Math.random() * 63) + '.png'
+          });
+          break;
+        }
+    }
+    console.debug && console.debug('Generated new devices!!', newMarkers) || console.log('Generated new devices!!', newMarkers);
     renderPlaces(newMarkers);
   }
   const DEGREE_STEP = 0.0002;  // 0.001 is about .07 miles (see below), or about 70 steps.  So 0.0001 is 7 steps.

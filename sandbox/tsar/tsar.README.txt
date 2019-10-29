@@ -2,6 +2,12 @@
 * M2M AR
 * * * * * * * * *
 
+Demo URL:
+https://codepen.io/sensei/pen/rNNzamg?editors=1000
+
+Dev URL:
+https://codepen.io/sensei/pen/QWWqbQX?editors=1000
+
 AR.js geolocation
 https://medium.com/chialab-open-source/location-based-gps-augmented-reality-on-the-web-7a540c515b3c
 
